@@ -1,0 +1,39 @@
+name: Actualizar en VPS
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v2
+
+      - name: Conectar al VPS y actualizar
+        uses: appleboy/ssh-action@master
+        with:
+          host: 93.127.200.109
+          username: ${{ secrets.VPS_USERNAME }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          script: |
+            cd /var/www/timbirichi/
+            git pull
+
+            composer install --optimize-autoloader --no-dev
+
+            npm i
+            npm run build
+
+            php artisan migrate
+
+            php artisan cache:clear
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+
+            service php8.3-fpm restart
+            sudo service nginx restart
