@@ -30,8 +30,8 @@ jobs:
 
             COMPOSER_ALLOW_SUPERUSER=1 composer install --optimize-autoloader --no-dev
 
-            /usr/local/bin/npm i
-            /usr/local/bin/npm run build
+            /root/.nvm/versions/node/v20.16.0/bin/npm i
+            /root/.nvm/versions/node/v20.16.0/bin/npm run build
 
             php artisan migrate
 
