@@ -13,6 +13,11 @@ jobs:
       - name: Checkout del repositorio
         uses: actions/checkout@v2
 
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
       - name: Conectar al VPS y actualizar
         uses: appleboy/ssh-action@master
         with:
