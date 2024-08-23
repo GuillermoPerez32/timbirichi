@@ -23,7 +23,7 @@ class ProductFactory extends Factory
             'stock' => $this->faker->randomNumber(2),
             'image' => $this->faker->imageUrl(),
             'is_active' => $this->faker->boolean,
-            'currency' => $this->faker->randomElement(['CUP', 'CUC']),
+            'currency' => $this->faker->randomElement(['CUP', 'USD']),
         ];
     }
 }
