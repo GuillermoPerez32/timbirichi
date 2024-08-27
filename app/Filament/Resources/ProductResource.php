@@ -21,6 +21,7 @@ class ProductResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('name'),
+                Forms\Components\Textarea::make('description'),
                 Forms\Components\FileUpload::make('image'),
                 Forms\Components\TextInput::make('price'),
                 Forms\Components\Select::make('currency')
