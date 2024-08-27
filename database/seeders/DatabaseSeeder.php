@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
         $categories = Category::factory(3)->create();
-        Product::factory(10)->create()->each(function ($product) use ($categories) {
+        Product::factory(3)->create()->each(function ($product) use ($categories) {
             $product->categories()->attach(
                 $categories->random(rand(1, 3))->pluck('id')->toArray()
             );

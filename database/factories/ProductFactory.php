@@ -21,7 +21,7 @@ class ProductFactory extends Factory
             'description' => $this->faker->text,
             'price' => $this->faker->randomFloat(2, 0, 1000),
             'stock' => $this->faker->randomNumber(2),
-            'image' => $this->faker->imageUrl(),
+            'image' => $this->faker->image('public/storage', 100, 100, null, false),
             'is_active' => $this->faker->boolean,
             'currency' => $this->faker->randomElement(['CUP', 'USD']),
         ];

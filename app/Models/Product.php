@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Str;
 
 class Product extends Model
 {
@@ -23,7 +24,19 @@ class Product extends Model
 
     protected $casts = [
         'is_active' => 'boolean',
+        'price' => 'float',
     ];
+
+    public function setNameAttribute(String $value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 
     public function categories(): BelongsToMany
     {

@@ -16,6 +16,7 @@ return new class extends Migration
                 ->primary();
 
             $table->string('name');
+            $table->string('slug');
             $table->text('description')->nullable();
             $table->decimal('price');
             $table->integer('stock');
